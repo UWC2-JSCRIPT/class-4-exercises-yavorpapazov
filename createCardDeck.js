@@ -37,7 +37,7 @@ const getDeck = () => {
 		}
 	}
 	return deck
-}  
+}
 
 // CHECKS
 const deck = getDeck()
