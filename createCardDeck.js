@@ -3,52 +3,45 @@
  * @returns {Array} deck - a deck of cards
  */
 const getDeck = () => {
-  const deck = []
-  const suits = ['hearts', 'spades', 'clubs', 'diamonds']
-
-  for (let index = 0; index < suits.length; index++) {
-    // create an array of 13 objects
-    for (let j = 1; j <= 13; j++) {
-      // for each loop, push a card object to the deck
-
-      // special cases for when j > 10
-      const displayVal = ''
-
-      switch (j) {
-        case j === 1:
-          displayVal = 'Ace'
-          break
-        case j > 1 && j <= 10:
-          displayVal = j
-          break
-        case j === 11:
-          displayVal = 'Jack'
-          break
-        case j === 12:
-          displayVal = 'Queen'
-          break
-        case j === 13:
-          displayVal = 'King'
-          break
-      }
-
-      const card = {
-        val: j,
-        displayVal: displayVal,
-        suit: suits[index],
-      }
-
-      if (displayVal === 'Ace') {
-        card.val = 11
-      }
-
-      deck.push(card)
-    }
-  }
+  	let arr = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
+ 	const deck = []
+  	let suit = ''
+	let val = 0
+	for(let i = 1; i <=4; i++) {
+		if(i === 1) {
+			suit = 'hearts'
+		}
+		if(i === 2) {
+			suit = 'spades'
+		}
+		if(i === 3) {
+			suit = 'clubs'
+		}
+		if(i === 4) {
+			suit = 'diamonds'
+		}
+		for(let j of arr) {
+			if(typeof j === 'number') {
+				val = j
+			} else if(j === 'Ace') {
+				val = 11
+			} else {
+				val = 10
+			}
+			let card = {
+				val, 
+				displayVal: j.toString(),
+				suit
+			}
+			deck.push(card)
+		}
+	}
+	return deck
 }
 
 // CHECKS
 const deck = getDeck()
+console.log(deck)
 console.log(`Deck length equals 52? ${deck.length === 52}`)
 
 const randomCard = deck[Math.floor(Math.random() * 52)]
