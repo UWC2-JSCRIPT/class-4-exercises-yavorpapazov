@@ -41,6 +41,7 @@ const getDeck = () => {
 
 // CHECKS
 const deck = getDeck()
+console.log(deck)
 console.log(`Deck length equals 52? ${deck.length === 52}`)
 
 const randomCard = deck[Math.floor(Math.random() * 52)]
